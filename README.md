@@ -8,6 +8,9 @@
 
 **My HuggingFace:** https://huggingface.co/stefanbschneider
 
+- Dataset for fine-tuning: https://huggingface.co/datasets/stefanbschneider/lfqa-max-answer-length-512
+- Fine-tuned model: https://huggingface.co/stefanbschneider/led-base-16384-lfqa-ans-len-512
+
 I'm just getting started, so feel free to suggest ideas and improvements, e.g., by opening an issue.
 
 
