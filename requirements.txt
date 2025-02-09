@@ -1,0 +1,6 @@
+datasets
+evaluate
+transformers
+accelerate
+rouge_score
+wandb
