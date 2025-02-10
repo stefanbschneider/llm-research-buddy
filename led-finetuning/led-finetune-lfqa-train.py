@@ -116,9 +116,15 @@ def compute_metrics(pred) -> dict[str, float]:
         predictions=pred_str, references=label_str, rouge_types=["rouge2"]
     )["rouge2"]
 
-    # Return rouge2 F1 score
-    # There are no longer separate precisoin, recall values in rouge2
-    return {"rouge2": round(rouge_output, 4)}
+    result = {"rouge2": round(rouge_output, 4)}
+
+    # Ensure the result object has all necessary fields
+    result["task"] = {
+        "name": "Sequence-to-sequence Language Modeling",
+        "type": "text2text-generation"
+    }
+
+    return result
 
 
 # Load and process datasets
@@ -179,4 +185,10 @@ trainer = Seq2SeqTrainer(
     eval_dataset=val_data,
 )
 trainer.train() # resume_from_checkpoint=True)
+
+# Save everything explicitly
+trainer.save_model(f"models/{my_model_name}")
+trainer.save_state()
+trainer.save_metrics(f"models/{my_model_name}/metrics.json")
+
 trainer.push_to_hub()
