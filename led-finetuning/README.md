@@ -9,7 +9,17 @@ tags:
 - led
 model-index:
 - name: led-base-16384-lfqa-ans-len-512
-  results: []
+  results:
+    - task:
+        type: text2text-generation
+      dataset:
+        type: stefanbschneider/lfqa-max-answer-length-512
+        name: Long-Form Question Answering
+      metrics:
+      - name: ROUGE
+        type: ROUGE
+        value: 0.0416
+        verified: false
 datasets:
 - stefanbschneider/lfqa-max-answer-length-512
 language:
